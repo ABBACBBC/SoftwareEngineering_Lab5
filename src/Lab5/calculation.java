@@ -6,7 +6,7 @@ public class calculation {
 	}
 	
 	
-	public double counter() {
+	public double grade12() {
 		int first=(int)(Math.random()*100);
 		int second=(int)(Math.random()*100);
 		int sym=(int)(Math.random());
