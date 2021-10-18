@@ -1,29 +1,91 @@
-package Lab5;
-
+package lab5;
 import java.text.DecimalFormat;
+import java.util.*;
 
 public class calculation {
-	public static void main(String args[]) {
-
+	public static void main(String[] args) {
+		int grade=0,number=0;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please enter your grade?");
+		grade=sc.nextInt();
+		System.out.println("Please enter the number of questions?");
+		number=sc.nextInt();
+		calculate(grade,number);
 	}
-
-	public static double grade12() {
-		int first = (int) (Math.random() * 100);
-		int second = (int) (Math.random() * 100);
-		int sym = (int) (Math.random());
-		int result = 0;
-		if (sym == 0) {
-			result = first + second;
-			System.out.println(first + "+" + second + "=?");
-		} else if (sym == 1) {
-			result = first - second;
-			System.out.println(first + "-" + second + "=?");
+	
+	
+	public static void calculate(int grade,int number)
+	{
+		double result=0,answer=0;
+		int right=0;
+		double score;
+		if(grade == 1 || grade == 2)
+		{
+			for(int i=0;i<number;i++) 
+			{
+				Scanner sc=new Scanner(System.in);
+				result = grade12();
+				answer=sc.nextDouble();
+				if(answer == result)
+				{
+					right++;
+				}
+			}
 		}
-		double r = (double) result;
+		else if(grade == 3 || grade == 4)
+		{
+			for(int i=0;i<number;i++) 
+			{
+				Scanner sc=new Scanner(System.in);
+				result = grade34();
+				answer=sc.nextDouble();
+				if(answer == result)
+				{
+					right++;
+				}
+			}
+		}
+		else if(grade == 5 || grade == 6)
+		{
+			for(int i=0;i<number;i++) 
+			{
+				Scanner sc=new Scanner(System.in);
+				result = grade56();
+				answer=sc.nextDouble();
+				if(answer == result)
+				{
+					right++;
+				}
+			}
+		}
+		if(right == number)
+		{
+			System.out.println("end! All right, that's great! Your score is 100.");
+		}
+		else
+		{
+			System.out.println("end! Wrong question, your score is "+100*right/number);
+		}
+	}
+	public static double grade12() {
+		int first=(int)(Math.random()*100);
+		int second=(int)(Math.random()*100);
+		int sym=(int)(Math.random());
+		int result = 0;
+		if(sym==0) {
+			result=first+second;
+			System.out.println(first+"+"+second+"=?");
+		}
+		else if(sym==1){
+			result=first-second;
+			System.out.println(first+"-"+second+"=?");
+		}
+		double r=(double)result;
 		return r;
 
-	}
+		}
 
+	
 	public static double grade34() {
 		int opr = (int) (Math.random() * 3);
 		int a = (int) (Math.random() * 500);
@@ -53,40 +115,39 @@ public class calculation {
 		return res;
 	}
 	
+	
 	public static double grade56(){
 
 		double result = 0;
 		
 		DecimalFormat df = new DecimalFormat( "0.00" );
 		double d1=Math.random() * 100;
-	   	String str1=df.format( d1 );
-	    	double d2=Math.random() * 100;
-    		String str2=df.format( d2 );
+	    String str1=df.format( d1 );
+	    double d2=Math.random() * 100;
+    	String str2=df.format( d2 );
 		
 		int sym = (int) (Math.random() * 4);
 		if(sym==0) {
-			System.out.print(str1+ "+" +str2+ "=?");
+			System.out.println(str1+ "+" +str2+ "=?");
 			double result_pre= Double.parseDouble(str1) + Double.parseDouble(str2);
 			String result_num=df.format( result_pre );
 			result= Double.parseDouble(result_num);
 		}else if(sym==1){
-			System.out.print(str1+ "-" +str2+ "=?");
+			System.out.println(str1+ "-" +str2+ "=?");
 			double result_pre= Double.parseDouble(str1) - Double.parseDouble(str2);
 			String result_num=df.format( result_pre );
 			result= Double.parseDouble(result_num);
 		}else if(sym==2){
-			System.out.print(str1+ "*" +str2+ "=?");
+			System.out.println(str1+ "*" +str2+ "=?");
 			double result_pre= Double.parseDouble(str1) * Double.parseDouble(str2);
 			String result_num=df.format( result_pre );
 			result= Double.parseDouble(result_num);
 		}else{
-			System.out.print(str1+ "/" +str2+ "=?");
+			System.out.println(str1+ "/" +str2+ "=?");
 			double result_pre= Double.parseDouble(str1) / Double.parseDouble(str2);
 			String result_num=df.format( result_pre );
 			result= Double.parseDouble(result_num);
 		}
-		
 		return result;
 	}
-
 }
