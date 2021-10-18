@@ -1,11 +1,13 @@
 package Lab5;
 
+import java.text.DecimalFormat;
+
 public class calculation {
 	public static void main(String args[]) {
 
 	}
 
-	public double grade12() {
+	public static double grade12() {
 		int first = (int) (Math.random() * 100);
 		int second = (int) (Math.random() * 100);
 		int sym = (int) (Math.random());
@@ -22,7 +24,7 @@ public class calculation {
 
 	}
 
-	public double grade34() {
+	public static double grade34() {
 		int opr = (int) (Math.random() * 3);
 		int a = (int) (Math.random() * 500);
 		int b = (int) (Math.random() * 500);
@@ -50,4 +52,41 @@ public class calculation {
 		}
 		return res;
 	}
+	
+	public static double grade56(){
+
+		double result = 0;
+		
+		DecimalFormat df = new DecimalFormat( "0.00" );
+		double d1=Math.random() * 100;
+	   	String str1=df.format( d1 );
+	    	double d2=Math.random() * 100;
+    		String str2=df.format( d2 );
+		
+		int sym = (int) (Math.random() * 4);
+		if(sym==0) {
+			System.out.print(str1+ "+" +str2+ "=?");
+			double result_pre= Double.parseDouble(str1) + Double.parseDouble(str2);
+			String result_num=df.format( result_pre );
+			result= Double.parseDouble(result_num);
+		}else if(sym==1){
+			System.out.print(str1+ "-" +str2+ "=?");
+			double result_pre= Double.parseDouble(str1) - Double.parseDouble(str2);
+			String result_num=df.format( result_pre );
+			result= Double.parseDouble(result_num);
+		}else if(sym==2){
+			System.out.print(str1+ "*" +str2+ "=?");
+			double result_pre= Double.parseDouble(str1) * Double.parseDouble(str2);
+			String result_num=df.format( result_pre );
+			result= Double.parseDouble(result_num);
+		}else{
+			System.out.print(str1+ "/" +str2+ "=?");
+			double result_pre= Double.parseDouble(str1) / Double.parseDouble(str2);
+			String result_num=df.format( result_pre );
+			result= Double.parseDouble(result_num);
+		}
+		
+		return result;
+	}
+
 }
